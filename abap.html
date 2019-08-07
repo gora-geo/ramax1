@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<style type="text/css">
+    /* внешние границы таблицы серого цвета толщиной 1px */
+table {border: 0.5px solid } 
+/* границы ячеек первого ряда таблицы */
+th {border: 0.5px solid}
+/* границы ячеек тела таблицы */
+td {border: 0.5px solid }
+  #table1{
+  
+  }
+</style>
+<body>
+	
+  <table id="table1" style="border:1px solid;"
+  cellspacing="0">
+
+  
+</table>
+<script type="text/javascript">
+  
+
+
+
+  
+
+var cart = {
+
+    "x": ['Jan','Jan','Mar','Mar','Feb'],
+
+  "grp_y": [1,2,1,2,2],
+
+  "y": ['Vasya','Petya','Vasya','Petya','Petya'],
+
+  "val": [9,3,6,4,2]
+
+};
+
+  var month = ['&nbsp;&nbsp;&nbsp;'];
+  var month2 = [];
+
+var x=cart.x;
+var yy = cart.y;
+var val = cart.val;
+var w = x.length;
+var str = document.getElementById('table1');
+   
+   
+while (w != 0) { // выводит 0, затем 1, затем 2
+console.log(x);
+  var i;
+var b;
+var q1 = [];
+var q2 = [];
+var q3 = [];
+
+var y = null;
+for (i = 0; i < x.length; i++) { // используем существующую переменную
+  b=x[0];
+  /*var addTr = document.createElement("tr");*/
+    if ( b == x[i]) {
+      if (x[i]==y) {
+          
+    
+      var q4 = [];
+      q4[0]=yy[i];
+       q4[1]=val[i];
+      month2.push(q4);
+      w=w-1;
+      }
+      else {
+  
+        
+        month.push(x[i]);
+
+     
+      var q4 = [];
+      q4[0]=yy[i];
+       /*month2.push(yy[i]);*/
+      y= x[i];
+     /* console.log("y=",y);*/
+      
+      q4[1]=val[i];
+      month2.push(q4);
+      w=w-1;
+
+      }
+   
+     
+    }
+    else {
+      q1.push(x[i]); // добавляем новые элементы в конец
+      q2.push(yy[i]); // добавляем новые элементы в конец
+      q3.push(val[i]); // добавляем новые элементы в конец
+    }
+
+  
+}
+
+x=q1;
+yy=q2;
+val=q3;
+}
+
+
+
+  
+
+var mi = 0;
+var addTr = document.createElement("tr");
+for ( mi = 0; mi < month.length; mi++) {
+
+var addTd = document.createElement("th");
+        addTd.innerHTML=month[mi];
+        
+    addTr.appendChild(addTd);
+    str.appendChild(addTr);
+    
+}
+
+
+var w33 = month2.length;
+var ss = month2;
+
+var col = 0;
+while (w33 != 0) { 
+	/*console.log(ss);*/
+	
+	col = 0;
+var q7=[];
+var i=0;
+var zz = null;
+
+
+var addTr = document.createElement("tr");
+			var addTd = document.createElement("th");
+addTd.innerHTML=ss[i][0];
+       
+    addTr.appendChild(addTd);
+    str.appendChild(addTr);
+for ( i = 0; i < ss.length; i++) {
+	var s = ss[0][0];
+	if (ss[i][0]==s){
+		if (ss[i][0]==zz){
+			var addTd = document.createElement("td");
+		
+		addTd.innerHTML=ss[i][1];
+       
+    addTr.appendChild(addTd);
+    str.appendChild(addTr);
+    col++;
+		w33=w33-1;	
+		}
+		else {
+			/*var addTr = document.createElement("tr");*/
+			var addTd = document.createElement("td");
+			
+
+		
+
+    addTd.innerHTML=ss[i][1];
+       
+    addTr.appendChild(addTd);
+    str.appendChild(addTr);
+    col++;
+
+		zz=ss[i][0];
+		w33=w33-1;
+		}
+		
+
+	}
+	else{
+		q7.push(ss[i]);
+		
+		
+		
+	}
+	
+
+}
+
+ss=q7;
+
+if (col < month.length ) {
+		var xxx = month.length - col-1;
+		for ( let i = 0; i < xxx; i++) { 
+			var addTd = document.createElement("td");
+addTd.innerHTML='0';
+       
+    addTr.appendChild(addTd);
+    str.appendChild(addTr);
+
+
+		}
+	}
+}
+
+</script>
+
+
+</body>
+</html>
+
